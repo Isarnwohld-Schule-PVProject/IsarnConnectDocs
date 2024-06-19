@@ -1,0 +1,133 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-06-20T00:11:21.1309454"><title>Row | IsarnConnect</title><script type="application/json" id="virtual-toc-data">[{"id":"usage","level":0,"title":"Usage","anchor":"#usage"},{"id":"variables","level":0,"title":"Variables","anchor":"#variables"},{"id":"source","level":0,"title":"Source","anchor":"#source"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b267/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Row | IsarnConnect"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="IsarnConnect Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/row.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Row | IsarnConnect"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/row.html#webpage",
+    "url": "writerside-documentation/row.html",
+    "name": "Row | IsarnConnect",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "IsarnConnect Help"
+}</script><!-- End Schema.org --></head><body data-id="Row" data-main-title="Row" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Objects.md|Objects"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IsarnConnect  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Row" id="Row.md">Row</h1><p id="sqoujh_2">There are 3 row objects matching each of the 3 meters. However, these do not differ from each other in the application.</p><section class="chapter"><h2 id="usage" data-toc="usage">Usage</h2><p id="sqoujh_3">The easiest way to create a Row object is to read out an .abl file using the <a href="abltorow.html" id="sqoujh_4" data-tooltip="The ablToRow method is used to create an .abl file as a Row class.">ablToRow</a> method.</p><div class="code-block" data-lang="python">
+row = ablToRow(&quot;example.abl&quot;)
+</div><p id="sqoujh_6">This row object can then be committed to the database.</p><div class="code-block" data-lang="python">
+row = ablToRow(&quot;example.abl&quot;)
+
+isarn.commitOnly(row)
+</div></section><section class="chapter"><h2 id="variables" data-toc="variables">Variables</h2><p id="sqoujh_8">All variables have the scheme that they start with a <code class="code" id="sqoujh_9">c</code> and then the code is written without the dots.</p><p id="sqoujh_10">The matching regular expression looks like this.</p><div class="code-block" data-lang="python">
+[c][1-9]+
+</div><section class="chapter"><h3 id="example" data-toc="example">Example</h3><p id="sqoujh_12">As an example, let us take the date of a row.</p><div class="table-wrapper"><table class="wide" id="sqoujh_13"><thead><tr class="ijRowHead" id="sqoujh_14"><th id="sqoujh_15"><p>Code</p></th><th id="sqoujh_16"><p>Result</p></th></tr></thead><tbody><tr id="sqoujh_17"><td id="sqoujh_18"><div class="code-block" data-lang="python">
+row = ablToRow(&quot;example.com&quot;)
+
+date = row.c092
+
+print(date)
+</div></td><td id="sqoujh_22"><p>231216</p></td></tr></tbody></table></div></section></section><section class="chapter"><h2 id="source" data-toc="source">Source</h2><p id="sqoujh_23">The rows comprise 3 classes, one class for each counter, and are structured in such a way that there is a column for each OBIS code on which this is stored. These codes are still statically implemented in the classes.</p><aside class="prompt" data-type="warning" data-title="" id="sqoujh_24"><p id="sqoujh_25">It is not recommended to use the <code class="code" id="sqoujh_26">toTableRow</code> function, as this is only for use in the IsarnConnect class.</p></aside><section class="chapter"><h3 id="els" data-toc="els">ELS</h3><div class="code-collapse" data-lang="python" data-is-expanded="false" data-synopsis="class ELS:">
+class ELS:
+
+    def __init__(self, c091: float, c092: float, c010: float, c120: float, c150: float, c160: float, c220: float,
+                 c250: float, c260: float, c180: float, c280: float, c580: float, c680: float, c780: float, c880: float,
+                 c030: float, c033: float):
+        self.c091 = c091
+        self.c092 = c092
+        self.c010 = c010
+        self.c120 = c120
+        self.c150 = c150
+        self.c160 = c160
+        self.c220 = c220
+        self.c250 = c250
+        self.c260 = c260
+        self.c180 = c180
+        self.c280 = c280
+        self.c580 = c580
+        self.c680 = c680
+        self.c780 = c780
+        self.c880 = c880
+        self.c030 = c030
+        self.c033 = c033
+
+    def toTableRow(self):
+        return elsRow(c091=self.c091, c092=self.c092, c010=self.c010, c120=self.c120, c150=self.c150, c160=self.c160,
+                      c220=self.c220, c250=self.c250, c260=self.c260, c180=self.c180, c280=self.c280, c580=self.c580,
+                      c680=self.c680, c780=self.c780, c880=self.c880, c030=self.c030, c033=self.c033)
+</div></section><section class="chapter"><h3 id="lgz" data-toc="lgz">LGZ</h3><div class="code-collapse" data-lang="python" data-is-expanded="false" data-synopsis="class LGZ:">
+class LGZ:
+    def __init__(self, c091: float, c092: float, c010: float, c150: float, c160: float, c180: float, c250: float,
+                 c260: float, c280: float, c580: float, c680: float, c780: float, c880: float, c021: float,
+                 c2700: float, c2701: float, c2702: float, c1700: float, c1701: float, c1702: float, c512: float):
+        self.c091 = c091
+        self.c092 = c092
+        self.c010 = c010
+        self.c150 = c150
+        self.c160 = c160
+        self.c180 = c180
+        self.c250 = c250
+        self.c260 = c260
+        self.c280 = c280
+        self.c580 = c580
+        self.c680 = c680
+        self.c780 = c780
+        self.c880 = c880
+        self.c021 = c021
+        self.c2700 = c2700
+        self.c2701 = c2701
+        self.c2702 = c2702
+        self.c1700 = c1700
+        self.c1701 = c1701
+        self.c1702 = c1702
+        self.c512 = c512
+
+    def toTableRow(self):
+        return lgzRow(c091=self.c091, c092=self.c092, c010=self.c010, c150=self.c150, c160=self.c160, c180=self.c180,
+                      c250=self.c250, c260=self.c260, c280=self.c280, c580=self.c580, c680=self.c680, c780=self.c780,
+                      c880=self.c880, c021=self.c021, c2700=self.c2700, c2701=self.c2701, c2702=self.c2702,
+                      c1700=self.c1700, c1701=self.c1701, c1702=self.c1702, c512=self.c512)
+</div></section><section class="chapter"><h3 id="slb" data-toc="slb">SLB</h3><div class="code-collapse" data-lang="python" data-is-expanded="false" data-synopsis="class SLB:">
+class SLB:
+    def __init__(self, c000: float, c001: float, c002: float, c003: float, c010: float, c091: float, c092: float,
+                 c121: float, c122: float, c141: float, c142: float, c151: float, c152: float, c161: float, c162: float,
+                 c180: float, c181: float, c182: float, c183: float, c184: float, c580: float, c581: float, c582: float,
+                 c583: float, c584: float, c880: float, c881: float, c882: float, c883: float, c884: float):
+        self.c000 = c000
+        self.c001 = c001
+        self.c002 = c002
+        self.c003 = c003
+        self.c010 = c010
+        self.c091 = c091
+        self.c092 = c092
+        self.c121 = c121
+        self.c122 = c122
+        self.c141 = c141
+        self.c142 = c142
+        self.c151 = c151
+        self.c152 = c152
+        self.c161 = c161
+        self.c162 = c162
+        self.c180 = c180
+        self.c181 = c181
+        self.c182 = c182
+        self.c183 = c183
+        self.c184 = c184
+        self.c580 = c580
+        self.c581 = c581
+        self.c582 = c582
+        self.c583 = c583
+        self.c584 = c584
+        self.c880 = c880
+        self.c881 = c881
+        self.c882 = c882
+        self.c883 = c883
+        self.c884 = c884
+
+    def toTableRow(self):
+        return slbRow(c000=self.c000, c001=self.c001, c002=self.c002, c003=self.c003, c010=self.c010, c091=self.c091,
+                      c092=self.c092, c121=self.c121, c122=self.c122, c141=self.c141, c142=self.c142, c151=self.c151,
+                      c152=self.c152, c161=self.c161, c162=self.c162, c180=self.c180, c181=self.c181, c182=self.c182,
+                      c183=self.c183, c184=self.c184, c580=self.c580, c581=self.c581, c582=self.c582, c583=self.c583,
+                      c584=self.c584, c880=self.c880, c881=self.c881, c882=self.c882, c883=self.c883, c884=self.c884)
+</div></section></section><div class="last-modified">Last modified: 19 Juni 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="rowarray.html" class="navigation-links__prev">RowArray</a><a href="isarnmethods.html" class="navigation-links__next">IsarnMethods</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b267/app.js"></script></body></html>

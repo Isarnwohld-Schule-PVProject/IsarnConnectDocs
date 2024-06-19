@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-06-20T00:11:21.0757262"><title>RowArray | IsarnConnect</title><script type="application/json" id="virtual-toc-data">[{"id":"usage","level":0,"title":"Usage","anchor":"#usage"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b267/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="RowArray | IsarnConnect"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="IsarnConnect Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/rowarray.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="RowArray | IsarnConnect"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/rowarray.html#webpage",
+    "url": "writerside-documentation/rowarray.html",
+    "name": "RowArray | IsarnConnect",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "IsarnConnect Help"
+}</script><!-- End Schema.org --></head><body data-id="RowArray" data-main-title="RowArray" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="Objects.md|Objects"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>IsarnConnect  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="RowArray" id="RowArray.md">RowArray</h1><p id="-btpp8i_2">A row array is an array in which several rows of a meter can be stored.</p><section class="chapter"><h2 id="usage" data-toc="usage">Usage</h2><section class="chapter"><h3 id="create" data-toc="create">Create</h3><p id="-btpp8i_3">The RowArray is imported from RowArray.py. When initialising the array, you must specify the <a href="meter.html" id="-btpp8i_4" data-tooltip="The meter enum includes all 3 meters.">meter type</a>.</p><div class="code-block" data-lang="python">
+import RowArray import RowArray
+
+array = RowArray(meter=Meter.ELS)
+</div></section><section class="chapter"><h3 id="add" data-toc="add">Add</h3><p id="-btpp8i_6">To add a row, simply call up the <code class="code" id="-btpp8i_7">append</code> function.</p><div class="code-block" data-lang="python">
+row = ablToRow(&quot;example.abl&quot;)
+
+array.append(row)
+</div><p id="-btpp8i_9">If you want to add a list and rows to an array.</p><div class="code-block" data-lang="python">
+first_row = ablToRow(&quot;example1.abl&quot;)
+second_row = ablToRow(&quot;example2.abl&quot;)
+third_row = ablToRow(&quot;example3.abl&quot;)
+
+array = RowArray(meter=Meter.ELS)
+array.addList([first_row, second_row, third_row])
+</div></section><section class="chapter"><h3 id="deleting" data-toc="deleting">Deleting</h3><p id="-btpp8i_11">There are 2 functions for removing an element.</p><section class="chapter"><h4 id="pop" data-toc="pop">Pop</h4><p id="-btpp8i_12">Delete using the index.</p><div class="code-block" data-lang="python">
+array.pop(%index)
+</div></section><section class="chapter"><h4 id="remove" data-toc="remove">Remove</h4><p id="-btpp8i_14">Delete using the row.</p><div class="code-block" data-lang="python">
+array.remove(%row)
+</div></section><section class="chapter"><h4 id="aslist" data-toc="aslist">AsList</h4><p id="-btpp8i_16">If you need the RowArray as a list of rows.</p><div class="code-block" data-lang="python">
+list = array.asList()
+</div></section></section></section><div class="last-modified">Last modified: 19 Juni 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="objects.html" class="navigation-links__prev">Objects</a><a href="row.html" class="navigation-links__next">Row</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b267/app.js"></script></body></html>
